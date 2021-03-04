@@ -12,7 +12,7 @@ const updateText = function (element, newMessage) {
   return (document.querySelector(element).textContent = newMessage);
 };
 
-checkBtn.addEventListener('click', function () {
+const checkGuess = function () {
   const guess = Number(document.querySelector('.guess').value);
   if (!guess) {
     // No guess
@@ -43,6 +43,12 @@ checkBtn.addEventListener('click', function () {
       checkBtn.disabled = true;
     }
   }
+};
+
+checkBtn.addEventListener('click', checkGuess);
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') checkGuess();
 });
 
 document.querySelector('.again').addEventListener('click', function () {
